@@ -8,17 +8,17 @@ public class Demo {
 		int minutesToRun = Integer.parseInt(args[0]);
 		int seed = 1234;
 		boolean running = true;
-
-		Random RNG = new Random(seed);
-
+		
 		// Create an ArrayList to store the worker threads in
 		ArrayList<MatrixWorker> workers = new ArrayList<MatrixWorker>();
 
-		// Create 100 workers and give them a random priority from 1-10
-		for (int i = 0; i < 100; i++) {
-			MatrixWorker worker = new MatrixWorker(seed, 50);
-			worker.setPriority(RNG.nextInt(9) + 1);
-			workers.add(worker);
+		// Create 100 workers, with 10 of each priority level
+		for (int i = 0; i < 10; i++) {
+			for (int priority = 1; priority <= 10; priority++) {
+				MatrixWorker worker = new MatrixWorker(seed, 50);
+				worker.setPriority(priority);
+				workers.add(worker);
+			}
 		}
 
 		// Keep track of the starting time, and execute the workers
@@ -46,7 +46,7 @@ public class Demo {
 			try {
 				worker.join();
 				System.out.println(
-						worker.getPriority() + "|" + worker.getCount());
+						worker.getPriority() + "," + worker.getCount());
 				System.out.flush();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
