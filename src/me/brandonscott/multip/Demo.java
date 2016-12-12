@@ -1,12 +1,9 @@
 package me.brandonscott.multip;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class Demo {
-
 	public static void main(String[] args) {
 		int minutesToRun = Integer.parseInt(args[0]);
 		int seed = 1234;
