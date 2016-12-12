@@ -7,7 +7,7 @@ clean:
 		/bin/rm -f bin/me/brandonscott/multip/*.class
 
 test:	clean build
-		java -XX:+UseThreadPriorities -XX:ThreadPriorityPolicy=1 -cp bin/me/brandonscott/multip/ me.brandonscott.multip.Demo 1
-		java -XX:+UseThreadPriorities -XX:ThreadPriorityPolicy=1 -cp bin/me/brandonscott/multip/ me.brandonscott.multip.Demo 3
-		java -XX:+UseThreadPriorities -XX:ThreadPriorityPolicy=1 -cp bin/me/brandonscott/multip/ me.brandonscott.multip.Demo 5
-		java -XX:+UseThreadPriorities -XX:ThreadPriorityPolicy=1 -cp bin/me/brandonscott/multip/ me.brandonscott.multip.Demo 15
+		#java -XX:+UseThreadPriorities -XX:ThreadPriorityPolicy=1 -cp bin/me/brandonscott/multip/ me.brandonscott.multip.Demo 1
+		#java -XX:+UseThreadPriorities -XX:ThreadPriorityPolicy=1 -cp bin/me/brandonscott/multip/ me.brandonscott.multip.Demo 3
+		#java -XX:+UseThreadPriorities -XX:ThreadPriorityPolicy=1 -cp bin/me/brandonscott/multip/ me.brandonscott.multip.Demo 5 > 
+		java -XX:+UseThreadPriorities -XX:ThreadPriorityPolicy=1 -cp bin/me/brandonscott/multip/ me.brandonscott.multip.Demo 15 > $(shell uname)15.txt
