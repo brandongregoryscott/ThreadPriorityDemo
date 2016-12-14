@@ -1,0 +1,47 @@
+Author: Brandon Scott
+Creation Date: December 12, 2016
+Due Date: December 14, 2016
+Course: CSC 543 Fall 2016
+Professor Name: Dr. Parson
+Assignment: #4
+
+To benchmark thread priorities on the two different kernel implementations, I
+wrote a small program that spawns 100 worker threads that continuously generate
+50x50 matrices and multiply them. The threads keep a running count of how many
+calculations they have completed. This is similar to the method coined
+"meeting point thread characterization", where critical threads are identified
+by accumulating the number of iterations of a loop and periodically broadcasting
+the value. ("Thread-management techniques"). The threads will run until the main
+thread hits a realtime limit, upon which it signals the worker threads to halt
+through an interrupt. I chose to use a bounded time limit instead of a bounded
+iteration count because it seemed to make more sense when benchmarking how
+thread priorities affect the work throughput. There are a few different
+approaches to benchmarking multithreaded and multiprocess programs, as discussed
+in the "Multi-program benchmark definition" paper.
+
+I was curious to see how a random distribution of thread priorities might effect
+the spread for the graphs, so I added a command-line argument to randomly seed
+the thread priorities. It skews the results a bit in the shorter test runs, but
+it's harder to notice in the 15 minute run.
+
+When testing the program on Harry and Luna, I noticed the counts had very little
+variance. Upon further research, I discovered that you need root access as well
+as two specific command-line arguments to enable thread priorities.
+
+To get around this, I spun up two virtual machines with operating system images
+as close to Harry/Dumbledore as I could find. (Solaris 10/13, Cent OS 6.8)
+
+The matrix counts are not proportional for each OS, but the differences in the
+graph curves are very apparent. I've included the raw CSV files from my VM runs,
+if you'd be interested in those. They are in the results folder.
+
+Works Cited:
+
+R. Rakvic, Q. Cai, J. González, G. Magklis, P. Chaparro, and A. González,
+"Thread-management techniques to maximize efficiency in multicore and
+simultaneous multithreaded microprocessors."" ACM Trans. Archit. Code Optim.
+7, 2, Article 9 (October 2010), 25 pages.
+
+Adam N. Jacobvitz, Andrew D. Hilton, Daniel J. Sorin, "Multi-program benchmark
+definition", 2015 IEEE International Symposium on Performance Analysis of
+Systems and Software (ISPASS) vol. 00 no. undefined, p. 72-82, , 2015

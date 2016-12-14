@@ -5,6 +5,7 @@ build:
 
 clean:
 		mkdir -p bin/me/brandonscott/multip
+		/bin/rm -f *.csv
 		/bin/rm -f bin/me/brandonscott/multip/*.class
 
 test:	clean build
