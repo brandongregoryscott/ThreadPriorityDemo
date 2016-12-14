@@ -1,4 +1,4 @@
-all:		build
+all: build
 
 build:
 		javac src/me/brandonscott/multip/*.java -d bin/me/brandonscott/multip/
